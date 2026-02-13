@@ -44,14 +44,13 @@ public class User extends BaseEntity {
     private UserProfile profile;
 
     public void setProfile(UserProfile userProfile) {
-        if(profile == null) {
-            if(this.profile != null) {
-                this.profile.setUser(null);
-            }
-        } else {
-            profile.setUser(this);
+        if(this.profile != null) {
+            this.profile.setUser(null);
         }
-        this.profile = profile;
-    }
+        this.profile = userProfile;
 
+        if(userProfile != null) {
+            userProfile.setUser(this);
+        }
+    }
 }
